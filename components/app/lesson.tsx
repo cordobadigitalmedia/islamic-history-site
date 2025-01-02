@@ -4,7 +4,7 @@ import { LessonAndWrapperQuery } from "@/tina/__generated__/types"
 import { useTina } from "tinacms/dist/react"
 
 import { Footer } from "@/components/footer"
-import { PageContent } from "@/components/page/page-content"
+import { PageContent } from "@/components/lesson/page-content"
 import { SiteHeader } from "@/components/site-header"
 
 export function LessonComponent(props: {
