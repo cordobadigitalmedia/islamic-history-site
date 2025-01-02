@@ -1,4 +1,4 @@
-import HistoricalTimeline from "@/components/learning/historical-timeline"
+import HistoricalTimeline from "@/components/app/historical-timeline"
 
 export default function Page() {
   return (
