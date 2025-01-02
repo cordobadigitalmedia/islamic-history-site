@@ -26,13 +26,7 @@ type ButtonVariants =
   | null
   | undefined
 
-export function SiteHeader({
-  nav,
-  header,
-}: {
-  nav: PageAndNavQuery["nav"]
-  header: PageAndNavQuery["header"]
-}) {
+export function SiteHeader({ header }: { header: PageAndNavQuery["header"] }) {
   const headerHeight = header.headerHeight ? header.headerHeight : "64px"
   const logoHeight = header.logoHeight ? header.logoHeight : "50px"
   const logoWidth = header.logoWidth ? header.logoWidth : "50px"
@@ -83,107 +77,6 @@ export function SiteHeader({
             >
               <Button variant="default">{header.ctaButton.title}</Button>
             </Link>
-          </div>
-        )}
-        {Array.isArray(nav.links) && nav.links?.length > 0 && (
-          <div
-            className={`hidden grow ${
-              Boolean(header.navAlignment) && `justify-end`
-            } md:flex`}
-          >
-            <ul className="flex items-center gap-3 p-6">
-              {nav.links?.map((link) => {
-                let navLink = ""
-                let isExternal = false
-                if (link?.linkType === "page") {
-                  navLink =
-                    `/${link.linkedPage?._sys.breadcrumbs.join("/")}` || ""
-                }
-                if (link?.linkType === "relative") {
-                  navLink = link.link || ""
-                }
-                if (link?.linkType === "external") {
-                  navLink = link.link || ""
-                  isExternal = true
-                }
-                const buttonStyle = link?.buttonStyle
-                  ? (link?.buttonStyle as ButtonVariants)
-                  : ("default" as ButtonVariants)
-                return (
-                  <li
-                    data-tina-field={link && tinaField(link, "label")}
-                    key={link?.link}
-                    className="row-span-3"
-                  >
-                    <Link
-                      href={navLink}
-                      target={isExternal ? "_blank" : "_self"}
-                    >
-                      <Button variant={buttonStyle}>{link?.label}</Button>
-                    </Link>
-                  </li>
-                )
-              })}
-            </ul>
-          </div>
-        )}
-        {Array.isArray(nav.links) && nav.links?.length > 0 && (
-          <div className="flex flex-1 items-center justify-end space-x-4 md:hidden">
-            <Dialog>
-              <DialogTrigger asChild className="block md:hidden">
-                <Button
-                  variant="ghost"
-                  className="mr-2 px-0 text-base hover:bg-transparent focus-visible:bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0 md:hidden"
-                >
-                  <Menu className="size-6" />
-                  <span className="sr-only">Toggle Menu</span>
-                </Button>
-              </DialogTrigger>
-              <DialogContent className="flex flex-col justify-center py-12 sm:max-w-[425px]">
-                {nav.links?.map((link) => {
-                  let navLink = ""
-                  let isExternal = false
-                  if (link?.linkType === "page") {
-                    navLink =
-                      `/${link.linkedPage?._sys.breadcrumbs.join("/")}` || ""
-                  }
-                  if (link?.linkType === "relative") {
-                    navLink = link.link || ""
-                  }
-                  if (link?.linkType === "external") {
-                    navLink = link.link || ""
-                    isExternal = true
-                  }
-                  const buttonStyle = link?.buttonStyle
-                    ? (link?.buttonStyle as ButtonVariants)
-                    : ("default" as ButtonVariants)
-                  return (
-                    <Link
-                      key={link?.link}
-                      href={navLink}
-                      target={isExternal ? "_blank" : "_self"}
-                      data-tina-field={link && tinaField(link, "label")}
-                    >
-                      <Button variant={buttonStyle} className="w-full text-lg">
-                        {link?.label}
-                      </Button>
-                    </Link>
-                  )
-                })}
-                {header.darkmode && (
-                  <DialogFooter>
-                    <div className="flex w-full justify-center md:hidden">
-                      <ThemeToggle />
-                    </div>
-                  </DialogFooter>
-                )}
-              </DialogContent>
-            </Dialog>
-            {header.darkmode && (
-              <div className="hidden md:flex">
-                <ThemeToggle />
-              </div>
-            )}
           </div>
         )}
       </div>

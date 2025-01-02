@@ -1,15 +1,9 @@
-import React, { Suspense } from "react"
-import client from "@/tina/__generated__/client"
+import HistoricalTimeline from "@/components/learning/historical-timeline"
 
-import { PageComponent } from "@/components/app/page"
-
-export default async function Page() {
-  const result = await client.queries.pageAndNav({
-    relativePath: `home.mdx`,
-  })
+export default function Page() {
   return (
-    <Suspense>
-      <PageComponent {...result} />
-    </Suspense>
+    <div className="min-h-screen p-4 md:p-8 bg-muted/40">
+      <HistoricalTimeline />
+    </div>
   )
 }

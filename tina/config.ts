@@ -1,6 +1,7 @@
 import { defineConfig } from "tinacms"
 
 import { FormCollection } from "./collections/form"
+import { LessonCollection } from "./collections/lessons"
 import { PageCollection } from "./collections/page"
 import { AuthorCollection, PostCollection } from "./collections/post"
 import {
@@ -10,7 +11,7 @@ import {
 } from "./collections/wrapper"
 
 export default defineConfig({
-  branch: process.env.VERCEL_GIT_COMMIT_REF,
+  branch: process.env.VERCEL_GIT_COMMIT_REF || "main",
   clientId: process.env.TINA_CLIENT_ID || "",
   token: process.env.TINA_TOKEN || "",
   build: {
@@ -33,14 +34,6 @@ export default defineConfig({
     accept: ["image"],
   },
   schema: {
-    collections: [
-      PageCollection,
-      PostCollection,
-      FormCollection,
-      AuthorCollection,
-      NavCollection,
-      HeaderCollection,
-      FooterCollection,
-    ],
+    collections: [HeaderCollection, FooterCollection, LessonCollection],
   },
 })
