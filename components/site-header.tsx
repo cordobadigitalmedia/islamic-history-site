@@ -3,30 +3,16 @@
 import * as React from "react"
 import Image from "next/image"
 import Link from "next/link"
-import { PageAndNavQuery } from "@/tina/__generated__/types"
-import { Menu } from "lucide-react"
+import { LessonAndWrapperQuery } from "@/tina/__generated__/types"
 import { tinaField } from "tinacms/dist/react"
 
 import { Button } from "@/components/ui/button"
-import {
-  Dialog,
-  DialogContent,
-  DialogFooter,
-  DialogTrigger,
-} from "@/components/ui/dialog"
-import { ThemeToggle } from "@/components/theme-toggle"
 
-type ButtonVariants =
-  | "link"
-  | "default"
-  | "destructive"
-  | "outline"
-  | "secondary"
-  | "ghost"
-  | null
-  | undefined
-
-export function SiteHeader({ header }: { header: PageAndNavQuery["header"] }) {
+export function SiteHeader({
+  header,
+}: {
+  header: LessonAndWrapperQuery["header"]
+}) {
   const headerHeight = header.headerHeight ? header.headerHeight : "64px"
   const logoHeight = header.logoHeight ? header.logoHeight : "50px"
   const logoWidth = header.logoWidth ? header.logoWidth : "50px"

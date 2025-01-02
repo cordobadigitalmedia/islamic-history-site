@@ -1,6 +1,6 @@
 import React from "react"
 import Link from "next/link"
-import { PageAndNavQuery } from "@/tina/__generated__/types"
+import { LessonAndWrapperQuery } from "@/tina/__generated__/types"
 import {
   FacebookIcon,
   GithubIcon,
@@ -25,10 +25,6 @@ function objectEntriesFilter(
         Object.keys(platformLinks).includes(key)
     )
     .map(([key, value]) => ({ platform: key, handle: value }))
-}
-
-type PlatformLinks = {
-  [key: string]: string
 }
 
 const platformLinks = {
@@ -72,7 +68,11 @@ function SocialIcon({ platform, size = 24 }: SocialIconProps) {
   }
 }
 
-export function Footer({ footer }: { footer: PageAndNavQuery["footer"] }) {
+export function Footer({
+  footer,
+}: {
+  footer: LessonAndWrapperQuery["footer"]
+}) {
   const year = React.useMemo(() => new Date().getFullYear(), [])
   const social = footer.social ? objectEntriesFilter(footer.social) : null
   let bgStyle = ""
