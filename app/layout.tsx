@@ -33,11 +33,18 @@ export default function RootLayout({ children }: RootLayoutProps) {
         <body className={noto_sans.variable + " " + noto_serif.variable}>
           <ThemeProvider
             attribute="class"
-            defaultTheme="system"
-            enableSystem
+            defaultTheme="light"
             disableTransitionOnChange
           >
-            {children}
+            <div
+              className="min-h-screen p-4 md:p-8 bg-fixed"
+              style={{
+                backgroundImage:
+                  "url('./7777ec68-bdc5-431c-905e-56ee7b09af8e.webp')",
+              }}
+            >
+              {children}
+            </div>
           </ThemeProvider>
         </body>
       </html>
